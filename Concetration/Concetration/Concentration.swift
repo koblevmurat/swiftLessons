@@ -48,9 +48,17 @@ class Concetntration {
             //let matchingCard = card
             /*cards.append(card)
             cards.append(card)//copy not a pointer*/
-           
         }
-        
-        // TODO: Shuffle the cards
+        Shuffle()
+    }
+    
+    // TODO: Shuffle the cards
+    func Shuffle(){
+        for index in cards.indices {
+            //let randomIndex = Int(arc4random_uniform(UInt32(cards.count)))
+            let randomEl = cards.randomElement()!
+            cards.replaceSubrange(Range<Int> (index...index), with: repeatElement(randomEl, count: 1))
+            cards.insert(randomEl, at: index)
+        }
     }
 }
