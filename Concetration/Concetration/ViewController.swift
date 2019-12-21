@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     lazy var game = Concetntration(numberOfPairsOfCards: (cardButtons.count + 1)/2)
     
     var flipCount: Int = 0 {
@@ -24,30 +24,31 @@ class ViewController: UIViewController {
     
     func emoji (for card: Card) -> String {
         
-    if emoji [card.identifier] == nil, emojiChoices.count > 0 {
-        let randomIndex = Int(arc4random_uniform(UInt32( emojiChoices.count)))
-        emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
-    }
+        if emoji [card.identifier] == nil, emojiChoices.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32( emojiChoices.count)))
+            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        }
         
-       /* if( emoji[card.identifier] != nil ){
-            return emoji[card.identifier]!
-        }
-        else {
-            return "?"
-        }
+        /* if( emoji[card.identifier] != nil ){
+         return emoji[card.identifier]!
+         }
+         else {
+         return "?"
+         }
          ==
          ->
          */
         
         return emoji[card.identifier] ?? "?"
     }
-       
+    
     
     @IBOutlet weak var FlipCountLabel: UILabel!
     
     @IBOutlet var cardButtons: [UIButton]!
-   
+    
     //@IBOutlet var cardButons: Array<UIButton>!
+    //MARK: Handle touch card
     
     @IBAction func TouchCard(_ sender: UIButton) {
         flipCount+=1
@@ -78,7 +79,7 @@ class ViewController: UIViewController {
         }
     }
     
-   
+    
     func flipCard(withEmoji emoji: String, on button: UIButton)  {
         print("flip card (withEmoji: \(emoji))")
         if button.currentTitle! == emoji {
